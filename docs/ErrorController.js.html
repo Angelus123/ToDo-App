@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: ToDo-App</title>
+    <title>JSDoc: Source: ErrorController.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,29 @@
 
 <div id="main">
 
-    <h1 class="page-title">ToDo-App</h1>
+    <h1 class="page-title">Source: ErrorController.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>  /**
+     * @property {Function} globalErrorHand End Point for For Error Handling
+     */
+export const  globalErrorHandling = (err,req,res,next) => { 
+    err.statusCode = err.statusCode || 500;
+    err.status = err.status || 'error'
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+     res.status(err.statusCode).json({
+         status: err.status,
+         message:err.message
+     })
+}</code></pre>
+        </article>
+    </section>
 
 
 

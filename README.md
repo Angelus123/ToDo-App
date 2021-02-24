@@ -1,10 +1,10 @@
 
 # ToDo App REST API
-# For task management
+### For task management
 
 Here is a list of all API Endpoints that you will find:
 
-# Authentication
+## Authentication
 
 * POST /api/v1/signup
 * POST /api/v1/login
@@ -13,7 +13,7 @@ Here is a list of all API Endpoints that you will find:
 * DELETE /api/v1/user/:id
 * PATCH /api/v1/user/:id
 
-# ToDo item
+## ToDo item
 
 * POST /api/v1/task
 * GET /api/v1/task
@@ -59,8 +59,10 @@ To start the server do
 ```
 $ npm run dev-start
 ```
-To run the test do
+To run the doc do
 
+```
+npm run doc
 ```
 
 ### Author

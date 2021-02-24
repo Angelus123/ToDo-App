@@ -1,3 +1,9 @@
+// @ts-check
+/**
+ * author Angelus
+  * @see <a href = "https://github.com/Angelus123">IZERE Ange Felix</a>
+ * @type {string}
+ */
 import express from "express"
 import bodyParser from "body-parser"
 import UserRouter from "./routes/userRouter"
@@ -17,7 +23,7 @@ app.get('/', (req,res)=>{res.status(200).send({
 })
 })
 app.use((req, res, next) => {
-req.requestTime = new Date().toISOString();
+//req.requestTime = new Date().toISOString();
 // console.log(req.headers)
 next()
 })
