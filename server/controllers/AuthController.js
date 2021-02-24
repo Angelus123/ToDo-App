@@ -4,11 +4,13 @@ import catchAsync from "../utils/catchAsync"
 import jwt from 'jsonwebtoken'
 import AppError from '../utils/appError'
 
-/**
- * 
- * @param {string} Id -user Id
- * @returns{string} - Token of User
+
+   /**
+ * @param {string} Id -Id to obtain token  
+ * @returns{string} -Return token
  */
+
+
 const signToken = id => {
    return jwt.sign({id}, process.env.JWT_SECRET,{
         expiresIn:process.env.JWT_EXPIRES_IN  
@@ -32,6 +34,7 @@ export const signup = catchAsync(async(req, res, next) =>{
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm
     })
+ 
     const token = signToken(newUser._id)
     
     res.status(201).json({
@@ -82,8 +85,6 @@ export const protect = catchAsync(async (req, res, next)=> {
     if(!token){ 
         return next(new AppError('You are not logged in! Please login to get access', 401))
     }
-
-
 
     // 2. verificatoin token
     
