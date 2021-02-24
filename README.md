@@ -63,7 +63,6 @@ To run the doc do
 
 ```
 npm run doc
-```
 
 ### Author
 [IZERE Ange Felix](https://github.com/Angelus123)
