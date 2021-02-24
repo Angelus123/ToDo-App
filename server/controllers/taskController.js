@@ -1,5 +1,8 @@
 import Task from "../models/Task";
 import catchAsync from "../utils/catchAsync"
+  /**
+     * @property {Function} Create_To_Do_Item For reating to do Item
+     */
 
 export const createTask = catchAsync(async (req,res,next)=>{
     let taskInfo= {};
@@ -7,7 +10,6 @@ export const createTask = catchAsync(async (req,res,next)=>{
     taskInfo.Description=req.body.Description;
     taskInfo.Priority=req.body.Priority;
     taskInfo.CreateDate=req.requestTime = new Date().toISOString();
-    console.log(taskInfo)
     const newTask = await Task.create(taskInfo);
     res.status(201).json({
         status:"success",
@@ -23,8 +25,10 @@ export const createTask = catchAsync(async (req,res,next)=>{
                     
                 })
             })
-    
-    //Update controll function
+      /**
+     * @property {Function} Update_Todo_Item For Update to do Item
+     */
+  
     export const updateTask = catchAsync(async (req,res,next)=>{
         let taskInfo= {};
         taskInfo.title=req.body.Title;
@@ -40,7 +44,11 @@ export const createTask = catchAsync(async (req,res,next)=>{
                     taskInfo
                 })  
             })
-      //Delete controll function
+
+              /**
+     * @property {Function} Create_To_Do_Item API for Deleting Todo Item
+     */
+            
       export const deleteTask = catchAsync(async (req, res, next) => {
     
         let query = {_id:req.params.id}
@@ -50,7 +58,9 @@ export const createTask = catchAsync(async (req,res,next)=>{
         
     })
     
-          //Get All controll function
+        /**
+     * @property {Function} Create_To_Do_Item API for Get All Todo Item
+     */        //Get All controll function
     export const getAllTasks = catchAsync(async (req,res,next) => {
        
         const allTask = await Task.find({})

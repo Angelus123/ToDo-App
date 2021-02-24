@@ -1,3 +1,4 @@
+
 # ToDo App REST API
 ### For task management
 
@@ -61,8 +62,8 @@ $ npm run dev-start
 To run the doc do
 
 ```
-$ npm run doc
 
+$ npm run doc
 
 ### Author
 [IZERE Ange Felix](https://github.com/Angelus123)

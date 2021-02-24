@@ -4,10 +4,12 @@ import catchAsync from "../utils/catchAsync"
 import jwt from 'jsonwebtoken'
 import AppError from '../utils/appError'
 
+
    /**
  * @param {string} Id -Id to obtain token  
  * @returns{string} -Return token
  */
+
 
 const signToken = id => {
    return jwt.sign({id}, process.env.JWT_SECRET,{
@@ -15,6 +17,9 @@ const signToken = id => {
       })
 }
 
+  /**
+     * @property {Function} Sign_Up_API End Point for Sign Up
+     */
 
 export const signup = catchAsync(async(req, res, next) =>{
     const newUser =await User.create({
@@ -42,6 +47,9 @@ export const signup = catchAsync(async(req, res, next) =>{
 
     }) 
 })
+  /**
+     * @property {Function} Login_API End Point for Sign Up
+     */
 
 export const login = catchAsync(async (req,res,next) => {
     const {email,password} = req.body
@@ -63,6 +71,9 @@ export const login = catchAsync(async (req,res,next) => {
     })
 
 })
+  /**
+     * @property {Function} Protect End Point for Protecting Route
+     */
 export const protect = catchAsync(async (req, res, next)=> {
     //1 Getting tocken and check its there
     let token
@@ -76,6 +87,7 @@ export const protect = catchAsync(async (req, res, next)=> {
     }
 
     // 2. verificatoin token
+    
 
    const decoded= await promisify(jwt.verify)(token, process.env.JWT_SECRET)
 console.log(decoded)
