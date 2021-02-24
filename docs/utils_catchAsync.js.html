@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: utils/catchAsync.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: utils/catchAsync.js</h1>
 
     
 
@@ -26,48 +26,14 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>//@ts-check
-/**
- * @file index.js is the root file for todo app
- * @author IZERE Ange Felix
- * @see &lt;a href  ="https://github.com/Angelus123">IZERE Ange Felix&lt;/a>
- * @type {string}
- */ 
-import express from "express"
-import bodyParser from "body-parser"
-import UserRouter from "./routes/userRouter"
-import taskRoute from "./routes/taskRouter"
-
-import * as globalErrorHandling from "./controllers/ErrorController"
-import AppError  from "./utils/appError"
-
-const app = express();
-app.use(express.json())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
-
-app.get('/', (req,res)=>{res.status(200).send({
-    status:200, 
-    message:'welcome to todoApp',
-})
-})
-app.use((req, res, next) => {
-//req.requestTime = new Date().toISOString();
-// console.log(req.headers)
-next()
-})
-// console.log(app.get('env')
-
-app.use('/api/v1/user',UserRouter)
-app.use('/api/v1/task',taskRoute)
-
-app.all('*', (req,res,next) => {
- 
-    next(new AppError(`Can't find ${req.originalUrl} on this server`, 404))
-})
-
-app.use(globalErrorHandling. globalErrorHandling)
-export default app;</code></pre>
+            <pre class="prettyprint source linenums"><code>/**
+     * @property {Function} catchAsync  Erro handling function to catch all error from Controller
+     */
+const catchAsync = fn => {
+    return(req,res,next)=>{
+    fn(req, res, next).catch(err => next(err))
+}}
+export default catchAsync</code></pre>
         </article>
     </section>
 
